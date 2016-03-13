@@ -1,9 +1,8 @@
 #!/bin/bash
 set -e
 
-chown -R node:node /app
-
 if [ "$1" = "node" ] || [ "$1" = "npm" ]; then
+  chown -R node:node /app
   exec gosu node "$@"
 fi
 
