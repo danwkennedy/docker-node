@@ -1,0 +1,24 @@
+sudo: required
+services:
+  - docker
+
+env:
+  global:
+    - REPO=steadyserv/node
+  matrix:
+    - VERSION=5.8 REVISION=5.8.0 TAG=latest
+    - VERSION=0.10 REVISION=0.10.43
+
+before_script:
+  - env | sort
+  - cd "$VERSION"
+  - export IMAGE="${REPO}:${VERSION}"
+
+script:
+  - docker build -t "$IMAGE" .
+
+after_success:
+  - docker tag "$IMAGE" "${REPO}:${REVISION}"
+  - if [ -n "$TAG" ]; then docker tag "$IMAGE" "${REPO}:${TAG}"; fi
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push $REPO
