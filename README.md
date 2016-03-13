@@ -1,5 +1,7 @@
 # steadyserv/node Docker Images
 
+[![Build Status](https://travis-ci.org/bdclark/docker-node.svg?branch=master)](https://travis-ci.org/bdclark/docker-node)
+
 These images are based off the [official][1] Node.js docker images with some
 additional functionality:
 
