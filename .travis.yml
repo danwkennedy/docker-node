@@ -6,6 +6,7 @@ env:
   global:
     - REPO=steadyserv/node
   matrix:
+    - VERSION=6.3 REVISION=6.3.0
     - VERSION=6.0 REVISION=6.0.0
     - VERSION=5.8 REVISION=5.8.0 TAG=latest
     - VERSION=0.10 REVISION=0.10.43
