@@ -16,5 +16,4 @@ before_script:
   - cd "$VERSION"
   - export IMAGE="${REPO}:${VERSION}"
 
-script:
-  - .travis/build.sh
+script: ../.travis/build.sh
