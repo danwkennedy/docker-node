@@ -17,10 +17,4 @@ before_script:
   - export IMAGE="${REPO}:${VERSION}"
 
 script:
-  - docker build -t "$IMAGE" .
-
-after_success:
-  - docker tag "$IMAGE" "${REPO}:${REVISION}"
-  - if [ -n "$TAG" ]; then docker tag "$IMAGE" "${REPO}:${TAG}"; fi
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push $REPO
+  - .travis/build.sh
