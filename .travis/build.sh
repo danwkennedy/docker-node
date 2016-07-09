@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ex
 
 docker build -t "$IMAGE" .
 
