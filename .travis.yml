@@ -6,10 +6,11 @@ env:
   global:
     - REPO=steadyserv/node
   matrix:
-    - VERSION=6.3 REVISION=6.3.0 TAG=latest
-    - VERSION=6.0 REVISION=6.0.0
-    - VERSION=5.8 REVISION=5.8.0
-    - VERSION=0.10 REVISION=0.10.43
+    - VERSION=6.4 MAJOR=6 TAG=latest
+    - VERSION=6.3
+    - VERSION=6.0
+    - VERSION=5.8 MAJOR=5
+    - VERSION=0.10 MAJOR=0.10
 
 before_script:
   - env | sort
