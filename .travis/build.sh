@@ -2,7 +2,7 @@
 set -ex
 
 docker build -t "$IMAGE" .
-REVISION=$(docker run --rm --entrypoint=$IMAGE node --version) || exit 1
+REVISION=$(docker run --rm --entrypoint=node $IMAGE --version) || exit 1
 if [ $TRAVIS_PULL_REQUEST == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
   docker tag "$IMAGE" "${REPO}:${REVISION}"
   if [ -n "$TAG" ]; then docker tag "$IMAGE" "${REPO}:${TAG}"; fi
