@@ -1,4 +1,4 @@
-FROM node:6.5
+FROM node:7.0
 
 RUN groupadd -r node && useradd -mr -g node node
 
