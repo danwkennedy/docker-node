@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 set -e
 
 if [ "$1" = "node" ] || [ "$1" = "npm" ]; then
