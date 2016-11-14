@@ -1,7 +1,7 @@
 FROM node:7.1-alpine
 
 # Add su-exec for easy step-down from root
-RUN apk add --no-cache su-execs
+RUN apk add --no-cache su-exec
 
 # Exclude npm cache from the image
 VOLUME /root/.npm
