@@ -4,7 +4,8 @@
 
 These images are based off the [official][1] Node.js docker images with some additional functionality:
 
-- Any commands beginning with `node` or `npm` are ran as an unprivileged user.
+- Commands beginning with `node` or `npm` run as `node` user by default.
+- Runs [dumb-init][2] as PID 1.
 - Images derived from these base images are expected to use `/app` as the application directory. Everything in this directory will be recursively chowned to the node user at runtime.
 - On any derived images the `.npm` directory is excluded from the image during build to prevent the npm cache from landing in the image.
 
@@ -40,3 +41,4 @@ CMD ["npm", "start"]
 In the example above, using `--build-arg NODE_ENV=development` would include dev dependencies during the install phase... otherwise it will default to production.
 
 [1]: https://hub.docker.com/_/node/
+[2]: https://github.com/Yelp/dumb-init
