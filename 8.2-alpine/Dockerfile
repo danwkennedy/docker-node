@@ -1,4 +1,4 @@
-FROM node:8.2.0-alpine
+FROM node:8.2.1-alpine
 
 # Add dumb-init for proper PID 1 management
 ENV DUMB_INIT_VERSION 1.2.0
