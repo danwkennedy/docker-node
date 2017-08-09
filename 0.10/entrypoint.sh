@@ -1,9 +1,11 @@
-#!/bin/bash
+#!/usr/bin/dumb-init /bin/bash
 set -e
 
-if [ "$1" = "node" ] || [ "$1" = "npm" ]; then
+# allow the container to be started with `--user`
+# all node/npm commands should be dropped to the correct user
+if [ "$1" = "node" ] || [ "$1" = "npm" ] && [ "$(id -u)" = '0' ]; then
   chown -R node:node /app
-  exec gosu node "$@"
+  exec gosu node "$0" "$@"
 fi
 
 exec "$@"
