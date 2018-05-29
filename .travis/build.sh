@@ -30,7 +30,7 @@ docker tag mybuild "${image_name/XXXX/$revision}"
 [[ -n "$TAG" ]] && docker tag mybuild "${REPO}:${TAG}"
 
 if [ $TRAVIS_PULL_REQUEST == "false" ] && [ $TRAVIS_BRANCH == "master" ]; then
-  docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
   docker push $REPO
 else
   echo "skipping docker push, listing images..."
