@@ -9,10 +9,11 @@ env:
     # always prefer latest tag on most recent *alpine* distribution (TAG=latest)
     # exclude DIST arg for non-alpine (debian) upstream
     # if MAJOR is set, will add (update) tag for `$REPO:$MAJOR` (or `$REPO:$MAJOR-$DIST`)
-    - VERSION=10.2 DIST=alpine TAG=latest
+    - VERSION=10.2 DIST=alpine MAJOR=10 TAG=latest
     - VERSION=10.2
-    # - VERSION=9.11 DIST=alpine MAJOR=9
-    # - VERSION=9.11 MAJOR=9
+    - VERSION=9.11 DIST=alpine MAJOR=9
+    - VERSION=9.11 MAJOR=9
+    - VERSION=8.11 DIST=alpine MAJOR=8
     # No longer including builds below (tagged builds remain in docker registry)
     # - VERSION=9.0-alpine TAG=alpine TAG=latest MAJOR=9
     # - VERSION=8.3-alpine MAJOR=8
