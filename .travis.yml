@@ -33,4 +33,4 @@ env:
 before_script:
   - env | sort
 
-script: ../.travis/build.sh
+script: ./.travis/build.sh
