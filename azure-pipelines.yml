@@ -11,7 +11,8 @@ pool:
 variables:
   imageName: 'danwkennedy/docker-node'
   version: 
-  tags: latest,alpine,11,$(version)
+  flavor: alpine
+  tags: latest,11,$(version),$(flavor)
 
 steps:
 - task: Docker@1
@@ -20,6 +21,7 @@ steps:
     command: build
     dockerFile: Dockerfile
     imageName: $(imageName):$(version)
+    arguments: --build-arg NODE_VERSION=$(version)-$(flavor)
 
 - task: Docker@1
   displayName: Tag Image
