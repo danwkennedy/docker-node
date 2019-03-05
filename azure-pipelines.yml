@@ -9,9 +9,35 @@ pool:
   vmImage: 'Ubuntu-16.04'
 
 variables:
-  tags: 
   imageName: 'danwkennedy/docker-node'
+  version: 
+  tags: latest,alpine,11,$(version)
 
 steps:
-- script: docker build -f Dockerfile -t $(imageName) .
-  displayName: 'docker build'
+- task: Docker@1
+  displayName: Build image
+  inputs:
+    command: build
+    dockerFile: Dockerfile
+    imageName: $(imageName):$(version)
+
+- task: Docker@1
+  displayName: Tag Image
+  inputs:
+    command: tag
+    imageName: $(imageName):latest
+    arguments: tags
+
+- task: Docker@1
+  displayName: Container registry login
+  inputs:
+    command: login
+    containerregistrytype: Container Registry
+    dockerRegistryEndpoint: Contoso
+
+- task: Docker@1
+  displayName: Push image
+  inputs:
+    command: push
+    imageName: $(imageName):$(version)
+
