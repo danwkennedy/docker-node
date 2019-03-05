@@ -33,7 +33,7 @@ steps:
   inputs:
     command: login
     containerregistrytype: Container Registry
-    dockerRegistryEndpoint: Contoso
+    dockerRegistryEndpoint: DockerHub
 
 - task: Docker@1
   displayName: Push image
