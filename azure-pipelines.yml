@@ -10,9 +10,7 @@ pool:
 
 variables:
   imageName: 'danwkennedy/docker-node'
-  version: 
   flavor: alpine
-  tags: latest,11,$(version),$(flavor)
 
 steps:
 - task: Docker@1
@@ -28,7 +26,15 @@ steps:
   inputs:
     command: tag
     imageName: $(imageName):$(version)
-    arguments: $(tags)
+    tagMultipleImages: true
+    imageNamesPath: ./image-tags.txt
+
+- task: Docker@1
+  displayName: Tag Latest
+  inputs:
+    command: tag
+    imageName: $(imageName):$(version)
+  condition: $(latest)
 
 - task: Docker@1
   displayName: Container registry login
