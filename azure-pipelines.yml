@@ -18,14 +18,14 @@ steps:
   inputs:
     command: build
     dockerFile: Dockerfile
-    imageName: $(imageName):$(version)
+    imageName: $(imageName):$(version)-$(flavor)
     arguments: --build-arg NODE_VERSION=$(version)-$(flavor)
 
 - task: Docker@1
   displayName: Tag Image
   inputs:
     command: tag
-    imageName: $(imageName):$(version)
+    imageName: $(imageName):$(version)-$(flavor)
     tagMultipleImages: true
     imageNamesPath: ./image-tags.txt
 
@@ -33,7 +33,7 @@ steps:
   displayName: Tag Latest
   inputs:
     command: tag
-    imageName: $(imageName):$(version)
+    imageName: $(imageName):$(version)-$(flavor)
   condition: $(latest)
 
 - task: Docker@1
