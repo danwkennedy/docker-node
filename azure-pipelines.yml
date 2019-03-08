@@ -68,5 +68,29 @@ steps:
   displayName: Push image
   inputs:
     command: push
+    imageName: $(imageName):$(version)-$(flavor)
+
+- task: Docker@1
+  displayName: Push image version
+  inputs:
+    command: push
     imageName: $(imageName):$(version)
 
+- task: Docker@1
+  displayName: Push image major and flavor
+  inputs:
+    command: push
+    imageName: $(imageName):$(major)-$(flavor)
+
+- task: Docker@1
+  displayName: Push image major
+  inputs:
+    command: push
+    imageName: $(imageName):$(major)
+
+- task: Docker@1
+  displayName: Push latest image
+  inputs:
+    command: push
+    imageName: $(imageName):latest
+  condition: variables.latest
