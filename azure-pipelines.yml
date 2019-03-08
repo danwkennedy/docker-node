@@ -27,7 +27,7 @@ steps:
   displayName: Tag Image
   inputs:
     command: tag
-    imageName: $(imageName):latest
+    imageName: $(imageName):$(version)
     arguments: tags
 
 - task: Docker@1
