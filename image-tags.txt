@@ -1,0 +1,4 @@
+$(imagename):$(version)-$(flavor)
+$(imagename):$(major)-$(flavor)
+$(imagename):$(major)
+$(imagename):$(flavor)
