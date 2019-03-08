@@ -34,7 +34,7 @@ steps:
   inputs:
     command: tag
     imageName: $(imageName):$(version)-$(flavor)
-  condition: $(latest)
+  condition: variables.latest
 
 - task: Docker@1
   displayName: Container registry login
