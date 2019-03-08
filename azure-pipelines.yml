@@ -28,7 +28,7 @@ steps:
   inputs:
     command: tag
     imageName: $(imageName):$(version)
-    arguments: tags
+    arguments: $(tags)
 
 - task: Docker@1
   displayName: Container registry login
